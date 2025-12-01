@@ -1,0 +1,39 @@
+.star-border-btn {
+  position: relative;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background: transparent;
+  border: 3px solid #0b0c0c;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.star-border-btn .stars {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 20%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 80% 80%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 20% 80%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 80% 20%, #ffffff 2px, transparent 2px);
+  background-size: 50% 50%;
+  animation: rotate-stars 4s linear infinite;
+}
+
+@keyframes rotate-stars {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.star-border-btn:hover {
+  color: #000;
+  background: #b2cfcf;
+  border-color: #282f2f;
+}
