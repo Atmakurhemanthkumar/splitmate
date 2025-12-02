@@ -42,14 +42,20 @@ app.use((req, res, next) => {
 app.use(helmet());
 // Update CORS to allow both dev and production
 // Replace current CORS with:
+// Then use:
 app.use(cors({
   origin: [
-    'http://localhost:5173',  // Dev frontend
-    'https://splitmate.vercel.app',  // We'll update after deployment
-    'https://splitmate.vercel.app'  // Your actual frontend URL
+    'http://localhost:5173',
+    'https://splitmate-ten.vercel.app',
+    'https://splitmate.vercel.app'
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 // OR for development, allow all (temporarily):
 app.use(cors({
