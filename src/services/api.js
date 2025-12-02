@@ -1,9 +1,7 @@
 /* global process */
 
 // Change from localhost to your backend URL
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://your-backend-url.onrender.com/api'  // Production
-  : 'http://localhost:5000/api';  // Development
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Helper function for API calls
 const apiRequest = async (endpoint, options = {}) => {

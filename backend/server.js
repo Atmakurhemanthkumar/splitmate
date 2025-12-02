@@ -40,8 +40,20 @@ app.use((req, res, next) => {
 
 // Security Middleware
 app.use(helmet());
+// Update CORS to allow both dev and production
+// Replace current CORS with:
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',  // Dev frontend
+    'https://splitmate.vercel.app',  // We'll update after deployment
+    'https://splitmate.vercel.app'  // Your actual frontend URL
+  ],
+  credentials: true
+}));
+
+// OR for development, allow all (temporarily):
+app.use(cors({
+  origin: '*',  // Allow all in development
   credentials: true
 }));
 
